@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  # ==================== MySQL 数据库 ====================
+  mysql:
+    image: mysql:8.0
+    container_name: campus-buddy-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-changeme}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-campus_buddy}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # 首次启动自动初始化数据库
+      - ../docs/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== FastAPI 后端 ====================
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: campus-buddy-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql+pymysql://root:${MYSQL_ROOT_PASSWORD:-changeme}@mysql:3306/${MYSQL_DATABASE:-campus_buddy}
+      JWT_SECRET: ${JWT_SECRET:-dev-secret}
+      JWT_ALGORITHM: ${JWT_ALGORITHM:-HS256}
+      JWT_EXPIRE_DAYS: ${JWT_EXPIRE_DAYS:-7}
+      DEBUG: "false"
+    ports:
+      - "8000:8000"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # ==================== React 前端（Nginx） ====================
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: campus-buddy-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
