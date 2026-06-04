@@ -15,7 +15,7 @@
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/Lutra666/CampusBuddy.git
+git clone https://github.com/ahut615/CampusBuddy.git
 cd CampusBuddy
 git checkout develop
 

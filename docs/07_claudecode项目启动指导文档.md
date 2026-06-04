@@ -22,7 +22,7 @@
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/Lutra666/CampusBuddy.git
+git clone https://github.com/ahut615/CampusBuddy.git
 cd CampusBuddy
 git checkout develop
 
@@ -160,7 +160,7 @@ campus-buddy/
 ## 六、Git协作规范（v1.1新增）
 
 ### 6.1 远程仓库
-- 仓库地址：`https://github.com/Lutra666/CampusBuddy.git`
+- 仓库地址：`https://github.com/ahut615/CampusBuddy.git`
 - 主分支：`main`（稳定版本）
 - 开发分支：`develop`（日常开发）
 
@@ -269,7 +269,7 @@ export async function login(data: LoginRequest): Promise<ApiResponse<LoginData>>
 ### 通用提示词模板
 ```
 你是Campus Buddy项目的[你的模块名]负责人，严格遵守项目总架构文档和开发规范。
-仓库地址：https://github.com/Lutra666/CampusBuddy.git
+仓库地址：https://github.com/ahut615/CampusBuddy.git
 技术栈：React+TypeScript+TailwindCSS+shadcn/ui / FastAPI+SQLAlchemy+JWT
 
 核心规则：
@@ -287,7 +287,7 @@ export async function login(data: LoginRequest): Promise<ApiResponse<LoginData>>
 #### 用户模块（成员A）
 ```
 你是Campus Buddy项目的用户系统负责人。
-仓库：https://github.com/Lutra666/CampusBuddy.git，分支：feature-auth
+仓库：https://github.com/ahut615/CampusBuddy.git，分支：feature-auth
 实现范围：
 前端：pages/Login、pages/Register、pages/Profile
 后端：api/auth.py、api/user.py、models/user.py、schemas/user.py
@@ -300,7 +300,7 @@ export async function login(data: LoginRequest): Promise<ApiResponse<LoginData>>
 #### 需求模块（成员B）
 ```
 你是Campus Buddy项目的搭子需求模块负责人。
-仓库：https://github.com/Lutra666/CampusBuddy.git，分支：feature-post
+仓库：https://github.com/ahut615/CampusBuddy.git，分支：feature-post
 实现范围：
 前端：pages/Home、pages/PostDetail、pages/Publish
 后端：api/post.py、models/post.py、schemas/post.py
@@ -312,7 +312,7 @@ export async function login(data: LoginRequest): Promise<ApiResponse<LoginData>>
 #### 申请模块（成员C）
 ```
 你是Campus Buddy项目的申请匹配模块负责人。
-仓库：https://github.com/Lutra666/CampusBuddy.git，分支：feature-application
+仓库：https://github.com/ahut615/CampusBuddy.git，分支：feature-application
 实现范围：
 前端：pages/Applications（我的申请页+审核页）
 后端：api/application.py、models/application.py、schemas/application.py
@@ -324,7 +324,7 @@ export async function login(data: LoginRequest): Promise<ApiResponse<LoginData>>
 #### 通知部署模块（成员D）
 ```
 你是Campus Buddy项目的通知部署模块负责人。
-仓库：https://github.com/Lutra666/CampusBuddy.git，分支：feature-notification
+仓库：https://github.com/ahut615/CampusBuddy.git，分支：feature-notification
 实现范围：
 前端：pages/Notifications
 后端：api/notification.py、models/notification.py、docker/docker-compose.yml

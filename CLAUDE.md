@@ -4,14 +4,14 @@
 
 校园学习与兴趣协作平台，帮助学生找考研搭子、自习搭子、羽毛球搭子、大创队友、ACM队友等。
 
-- 仓库地址：https://github.com/Lutra666/CampusBuddy.git
+- 仓库地址：https://github.com/ahut615/CampusBuddy.git
 - 技术栈：React 18 + TypeScript + TailwindCSS + shadcn/ui | FastAPI + SQLAlchemy + JWT | MySQL 8.0+ | Docker
 
 ## 启动项目
 
 ```bash
 # 克隆仓库
-git clone https://github.com/Lutra666/CampusBuddy.git
+git clone https://github.com/ahut615/CampusBuddy.git
 cd CampusBuddy
 git checkout develop         # 骨架代码在 develop 分支
 
