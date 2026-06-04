@@ -8,16 +8,38 @@ API 文档（自动生成）：
     http://localhost:8000/docs
     http://localhost:8000/redoc
 """
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
+from app.core.database import Base, engine
+
+# 预先导入所有模型，确保 Base.metadata.create_all() 能识别全部表
+import app.models.tag         # noqa: F401  标签表（公共）
+import app.models.user         # noqa: F401  用户表 + user_tags（成员A）
+import app.models.post         # noqa: F401  需求表 + post_tags（成员B）
+import app.models.application # noqa: F401  申请表（成员C）
+import app.models.notification # noqa: F401  通知表（成员D）
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    应用生命周期：启动时自动创建数据库表（本地开发环境）。
+    Docker 环境由 init.sql 处理，此处不影响。
+    """
+    Base.metadata.create_all(bind=engine)
+    yield
+
 
 # ==================== 创建 FastAPI 应用 ====================
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     description="校园搭子平台 API — 考研搭子、自习搭子、运动搭子、大创队友、ACM队友",
+    lifespan=lifespan,
 )
 
 # ==================== CORS 中间件 ====================

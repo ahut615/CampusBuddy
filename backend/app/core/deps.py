@@ -2,13 +2,9 @@
 FastAPI 依赖注入模块。
 提供通用的认证检查等可复用依赖。
 """
-from typing import Optional
-
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from sqlalchemy.orm import Session
 
-from app.core.database import get_db
 from app.core.security import decode_access_token
 
 # HTTP Bearer Token 认证方案

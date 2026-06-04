@@ -14,7 +14,10 @@
     "react-router-dom": "^6.23.1",
     "axios": "^1.7.2",
     "zustand": "^4.5.2",
-    "lucide-react": "^0.378.0"
+    "lucide-react": "^0.378.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.3.0",
+    "class-variance-authority": "^0.7.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -23,6 +26,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5",
     "vite": "^5.2.12"
   }
