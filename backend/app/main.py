@@ -75,8 +75,10 @@ app.add_middleware(
 # app.include_router(post.router, prefix="/api/posts", tags=["需求"])
 
 # 申请模块（成员C）
-# from app.api import application
-# app.include_router(application.router, prefix="/api/applications", tags=["申请"])
+from app.api import application
+app.include_router(application.router, prefix="/api/applications", tags=["申请"])
+# 跨模块路由：GET /api/posts/{id}/applications（成员C 维护）
+app.include_router(application.post_app_router, prefix="/api/posts", tags=["申请"])
 
 # 通知模块（成员D）
 # from app.api import notification
