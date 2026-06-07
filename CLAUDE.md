@@ -57,6 +57,38 @@ cd frontend && npm install && cd ..
 4. `docs/05_数据库设计文档(er图+sql脚本).md` — 表结构参考
 5. `docs/06_api规范文档(openapi版).md` — 接口规范参考
 
+## ⭐ 团队协作指南
+
+**如果你是第一次打开这个项目，请直接阅读：`docs/团队协作书_CC开发指南.md`**
+里面包含你需要的完整 CC 提示词，复制粘贴即可开工。
+
+## 技术速查（写代码时必看）
+
+### 后端工具函数（已写好，直接用）
+```python
+from app.utils.response import ok, err           # 统一返回格式
+from app.core.security import hash_password, verify_password, create_access_token  # 密码+JWT
+from app.core.deps import get_current_user_id    # 认证依赖注入
+from app.core.database import get_db             # 数据库会话
+```
+
+### 后端文件责任
+| 你的模块 | 你要写的文件 | 只读（参考即可） |
+|---------|-------------|----------------|
+| 用户(A) | `api/auth.py` `api/user.py` | `models/user.py` `schemas/user.py` `core/*` |
+| 需求(B) | `api/post.py` | `models/post.py` `schemas/post.py` `core/*` |
+| 申请(C) | `api/application.py` | `models/application.py` `schemas/application.py` `core/*` |
+| 通知(D) | `api/notification.py` `docker/` | `models/notification.py` `core/*` |
+
+### 后端 models 和 schemas 已在骨架中写好了，直接 import 用。
+
+### 前端工具函数（已写好，直接用）
+```typescript
+import { useAuthStore } from '@/store/authStore'      // 用户状态（token/user/logout）
+import client from '@/api/client'                     // Axios实例（自动带JWT）
+// API封装在 @/api/auth.ts post.ts application.ts notification.ts
+```
+
 ## 当前状态
 
-Phase 0 骨架已完成，可直接运行。各模块的 API 文件、Model 文件、Schema 文件和页面文件均为**占位代码**，内含实现指引注释，需要你填充业务逻辑。
+Phase 0 骨架已完成，可直接运行。后端 core/ 和 models/ 全部可用。各模块的 API 文件和前端页面为占位代码，等待你填充业务逻辑。
