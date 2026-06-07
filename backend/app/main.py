@@ -65,10 +65,10 @@ app.add_middleware(
 # ==================== 注册路由 ====================
 # ---- 各模块负责人请在下方添加自己的 router ----
 
-# 用户模块（成员A）
-# from app.api import auth, user
-# app.include_router(auth.router, prefix="/api/auth", tags=["认证"])
-# app.include_router(user.router, prefix="/api/users", tags=["用户"])
+# 用户模块（成员A）✅ 已实现
+from app.api import auth, user  # noqa: E402
+app.include_router(auth.router, prefix="/api/auth", tags=["认证"])
+app.include_router(user.router, prefix="/api/users", tags=["用户"])
 
 # 需求模块（成员B）
 # from app.api import post
