@@ -79,8 +79,8 @@ app.add_middleware(
 # app.include_router(application.router, prefix="/api/applications", tags=["申请"])
 
 # 通知模块（成员D）
-# from app.api import notification
-# app.include_router(notification.router, prefix="/api/notifications", tags=["通知"])
+from app.api import notification
+app.include_router(notification.router, prefix="/api/notifications", tags=["通知"])
 
 
 # ==================== 健康检查 ====================
