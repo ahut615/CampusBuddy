@@ -71,8 +71,8 @@ app.include_router(auth.router, prefix="/api/auth", tags=["认证"])
 app.include_router(user.router, prefix="/api/users", tags=["用户"])
 
 # 需求模块（成员B）
-# from app.api import post
-# app.include_router(post.router, prefix="/api/posts", tags=["需求"])
+from app.api import post
+app.include_router(post.router, prefix="/api/posts", tags=["需求"])
 
 # 申请模块（成员C）
 # from app.api import application
